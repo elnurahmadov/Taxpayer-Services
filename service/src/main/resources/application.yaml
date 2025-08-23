@@ -2,6 +2,26 @@ spring:
   application:
     name: service
 
+  datasource:
+    url: jdbc:postgresql://localhost:5433/taxpayer_db
+    username: admin
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.yaml
+    drop-first: true
+    default-schema: taxpayer_postgres
+    liquibase-schema: public
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
 server:
   port: 8080
 
