@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'az.cybernet'
+version = '0.0.1-SNAPSHOT'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group = 'az.cybernet'
+    version = '0.0.1-SNAPSHOT'
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+}
