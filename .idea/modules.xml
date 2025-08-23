@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Taxpayer-Services.iml" filepath="$PROJECT_DIR$/.idea/Taxpayer-Services.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/Taxpayer-Services.service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/Taxpayer-Services.service.main.iml" />
     </modules>
   </component>
 </project>

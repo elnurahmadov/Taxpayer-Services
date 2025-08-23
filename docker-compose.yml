@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: taxpayer_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: taxpayer_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  liquibase:
+    image: liquibase/liquibase:latest
+    container_name: taxpayer_liquibase
+    depends_on:
+      - postgres
+    environment:
+      LIQUIBASE_URL: jdbc:postgresql://postgres:5432/taxpayer_db
+      LIQUIBASE_USERNAME: admin
+      LIQUIBASE_PASSWORD: admin123
+      LIQUIBASE_CHANGELOG_FILE: classpath:/db/changelog/changelog-master.yaml
+    volumes:
+      - ./db/changelog:/liquibase/changelog
+
+volumes:
+  postgres_data:
