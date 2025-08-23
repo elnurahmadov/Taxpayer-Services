@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - sql:
+            sql: CREATE TYPE services.tin_type_enum AS ENUM ('legal', 'individual');
+
+  - changeSet:
+      id: 4
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - sql:
+            sql: CREATE TYPE services.status_enum AS ENUM ('active', 'temporarily_suspended', 'revoked');
