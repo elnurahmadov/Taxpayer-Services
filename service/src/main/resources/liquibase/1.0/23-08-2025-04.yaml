@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - createTable:
+            schemaName: services
+            tableName: service
+            remarks: "Xidmətlərin siyahısı"
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: "uuid_generate_v4()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: service_id_primary_key
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                  remarks: "Xidmətin adı"
+              - column:
+                  name: description
+                  type: TEXT
+                  remarks: "Xidmətin qısa izahı"
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: now()
+              - column:
+                  name: status
+                  type: BOOLEAN
+                  remarks: "Xidmətin statusu"

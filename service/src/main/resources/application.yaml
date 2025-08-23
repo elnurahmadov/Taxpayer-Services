@@ -9,14 +9,11 @@ spring:
     driver-class-name: org.postgresql.Driver
 
   liquibase:
-    change-log: classpath:/db/changelog/changelog-master.yaml
-    drop-first: true
-    default-schema: taxpayer_postgres
-    liquibase-schema: public
+    change-log: classpath:/liquibase/changelog-master.yaml
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:

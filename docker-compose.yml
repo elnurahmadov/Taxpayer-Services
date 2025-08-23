@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   postgres:
     image: postgres:15
@@ -23,9 +21,9 @@ services:
       LIQUIBASE_URL: jdbc:postgresql://postgres:5432/taxpayer_db
       LIQUIBASE_USERNAME: admin
       LIQUIBASE_PASSWORD: admin123
-      LIQUIBASE_CHANGELOG_FILE: classpath:/db/changelog/changelog-master.yaml
+      LIQUIBASE_CHANGELOG_FILE: classpath:/liquibase/changelog-master.yaml
     volumes:
-      - ./db/changelog:/liquibase/changelog
+      - ./liquibase:/liquibase/changelog
 
 volumes:
   postgres_data:

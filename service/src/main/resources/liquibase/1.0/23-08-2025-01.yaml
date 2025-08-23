@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - sql:
+            sql: CREATE SCHEMA IF NOT EXISTS services;
+
+  - changeSet:
+      id: 2
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

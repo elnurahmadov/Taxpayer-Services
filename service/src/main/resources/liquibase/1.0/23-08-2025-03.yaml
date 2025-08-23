@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: elnur.ahmadov
+      runAlways: false
+      runOnChange: false
+      changes:
+        - createTable:
+            schemaName: services
+            tableName: taxpayer
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: "uuid_generate_v4()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: taxpayer_id_primary_key
+
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: tin
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+              - column:
+                  name: tin_type
+                  type: services.tin_type_enum
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: status
+                  type: services.status_enum
+                  defaultValue: 'active'
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: "now()"
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 6
+      author: elnur.ahmadov
+      changes:
+        - sql:
+            sql: COMMENT ON TABLE services.taxpayer IS 'Vergi ödəyicilərinin məlumatlarını saxlayır';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.name IS 'Vergi ödəyicisinin adı və ya şirkət adı';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.surname IS 'Vergi ödəyicisinin soyadı';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.middle_name IS 'Vergi ödəyicisinin atasının adı';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.tin IS 'Vergi ödəyicisinin VÖEN-i';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.tin_type IS 'Vergi ödəyicisinin VÖEN-nin növü';
+        - sql:
+            sql: COMMENT ON COLUMN services.taxpayer.status IS 'Vergi ödəyicisinin VÖEN-nin statusu';
